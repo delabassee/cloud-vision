@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: awwvision-worker
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
