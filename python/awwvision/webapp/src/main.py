@@ -43,7 +43,7 @@ def label(label):
 @app.route('/upload', methods=['POST'])
 def upload():
     logging.warning('enque before')
-    q.enqueue('main.process_url_task', 'https://cdn.pixabay.com/photo/2016/12/04/12/34/cat-1881599_960_720.jpg')
+    q.enqueue('main.process_url_task', 'http://delabassee.com/blog/wp-content/uploads/2014/05/pair-programming-1024x768.jpg')
     logging.warning('enque after')
     return render_template('crawler_started.html')
 
