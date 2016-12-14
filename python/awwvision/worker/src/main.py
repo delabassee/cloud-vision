@@ -51,7 +51,8 @@ def label_image_url(vision, storage, image_url):
     response = vision.detect_label(image_content)
     
     for labels in response:
-        logging.warning('label_image_url - for ' + image_url)
+        logging.warning('label_image_url - image_url: ' + image_url)
+        logging.warning('label_image_url - labels: ' + join(labels))
         storage.add_labels(labels)
         storage.add_image(image_url, labels) 
     
