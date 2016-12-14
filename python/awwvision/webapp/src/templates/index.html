@@ -45,4 +45,20 @@
       </div>
     </div>
   {% endif %}
+
+  <div class="crawl-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h4>
+          No images have been processed yet.
+        </h4>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <form method="POST" action="/upload">
+          <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Upload
+          </button>
+        </form>
+      </div>
+    </div>
+
 {% endblock content %}
