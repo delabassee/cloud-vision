@@ -12,11 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from gcloud import pubsub
 import psq
 import logging
-import requests
 
 from storage import Storage
 
