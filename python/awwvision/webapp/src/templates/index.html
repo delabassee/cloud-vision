@@ -30,8 +30,9 @@
     </div>
   {% endfor %}
 
-  <br/><br/><br/>
+
   <div class="crawl-card mdl-card mdl-shadow--2dp">
+      
       {% if not labels %}
       <div class="mdl-card__title mdl-card--expand">
         <h4>
@@ -39,15 +40,18 @@
         </h4>
       </div>
       {% endif %}
-      <div class="mdl-card__actions mdl-card--expand">
-        <form method="POST" action="/upload">
+      
+       <div class="mdl-card__actions mdl-card--expand">
+        <form method="POST" action="/upload" id="form1">
           <input type="text" name="url" size="100%" placeholder="Enter an image url">
           <br/>
-          <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Upload
-          </button>
         </form>
-        
+         
+         <button type="submit" form="form1" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Upload URL
+         </button>
+
+         
       </div>
     </div>
 
