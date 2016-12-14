@@ -45,15 +45,17 @@ def label_images(vision, storage, image_urls):
         storage.add_image(image_url, labels)
 
         
-def label_image_url(vision, storage, image_url):
-    
+def label_image_url(vision, storage, image_url):    
     logging.warning('label_image_url entry')
-
     image_content = download_image(image_url)
-
     response = vision.detect_label(image_content)
-
-    for image_url, labels in zip(image_urls, response):
+    
+    for labels in response:
+        logging.warning('label_image_url - for ' + labels + ' ' + image_url)
+        storage.add_labels(labels)
+        storage.add_image(image_url, labels) 
+    
+    for image_url, labels in zip(image_url, response):
         storage.add_labels(labels)
         storage.add_image(image_url, labels)        
         
