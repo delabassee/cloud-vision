@@ -41,6 +41,15 @@ def label_images(vision, storage, image_urls):
         storage.add_labels(labels)
         storage.add_image(image_url, labels)
 
+def label_image_url(image_url):
+    download_image(image_url)
+
+    response = vision.detect_labels(image_contents)
+
+    for image_url, labels in zip(image_urls, response):
+        storage.add_labels(labels)
+        storage.add_image(image_url, labels)        
+        
 
 def label_images_task(image_urls):
     vision = VisionApi()
@@ -48,6 +57,8 @@ def label_images_task(image_urls):
 
     label_images(vision, storage, image_urls)
 
+def process_url_task(url):
+    
 
 def scrape_reddit(subreddit, pages=10):
     after = None
