@@ -16,7 +16,7 @@ from flask import Flask, render_template
 from gcloud import pubsub
 import psq
 import logging
-import request
+import requests
 
 from storage import Storage
 
