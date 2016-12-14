@@ -51,8 +51,8 @@ def label(label):
 @app.route('/upload', methods=['POST'])
 def upload():
     logging.warning('upload entry')
-    #ts = str(time.time())
-    #logging.warning('/upload timestamp: ' + ts)
+    ts = str(time.time())
+    logging.warning('/upload timestamp: ' + ts)
     url = request.form['url']+'?ts='+ts
     logging.warning('enque before - url: ' + url)
     q.enqueue('main.process_url_task', url)
