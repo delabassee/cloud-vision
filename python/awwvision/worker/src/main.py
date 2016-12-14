@@ -42,9 +42,9 @@ def label_images(vision, storage, image_urls):
         storage.add_image(image_url, labels)
 
 def label_image_url(image_url):
-    download_image(image_url)
+    image_content = download_image(image_url)
 
-    response = vision.detect_labels(image_contents)
+    response = vision.detect_label(image_content)
 
     for image_url, labels in zip(image_urls, response):
         storage.add_labels(labels)
