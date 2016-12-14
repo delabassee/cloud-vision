@@ -18,9 +18,8 @@
 
 {% block content %}
   {% for label, img in labels|dictsort %}
+    {% if ts in img %}
     <div class="label-card mdl-card mdl-shadow--2dp"
-
-      {% if ts in img %}
         {% if img %}style="background: url('{{img}}') center / cover;"{% endif %}>
         <div class="mdl-card__title mdl-card--expand"></div>
         <div class="mdl-card__actions mdl-card--border">
@@ -28,9 +27,8 @@
             {{label}}
           </a>
         </div>
-      {% endif %}
-      
     </div>
+    {% endif %}
   {% endfor %}
 
   {% if labels %}
