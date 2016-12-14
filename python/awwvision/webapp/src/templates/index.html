@@ -29,32 +29,19 @@
       </div>
     </div>
   {% endfor %}
-  {% if not labels %}
-    <div class="crawl-card mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__title mdl-card--expand">
-        <h4>
-          No images have been processed yet.
-        </h4>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <form method="POST" action="/start_crawler">
-          <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Start the crawler
-          </button>
-        </form>
-      </div>
-    </div>
-  {% endif %}
 
+  <br/><br/><br/>
   <div class="crawl-card mdl-card mdl-shadow--2dp">
+      {% if not labels %}
       <div class="mdl-card__title mdl-card--expand">
         <h4>
           No images have been processed yet.
         </h4>
       </div>
-      <div class="mdl-card__actions mdl-card--border">
+      {% endif %}
+      <div class="mdl-card__actions mdl-card--expand">
         <form method="POST" action="/upload">
-          <input type="text" name="url" size="100" placeholder="Enter your image url please!">
+          <input type="text" name="url" size="100%" placeholder="Enter an image url">
           <br/>
           <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             Upload
