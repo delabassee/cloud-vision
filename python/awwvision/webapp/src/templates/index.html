@@ -19,15 +19,15 @@
 {% block content %}
   {% for label, img in labels|dictsort %}
     <div class="label-card mdl-card mdl-shadow--2dp"
-      {% if img %}style="background: url('{{img}}') center / cover;"{% endif %}>
-      <div class="mdl-card__title mdl-card--expand"></div>
 
       {% if ts in img %}
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/label/{{label}}">
-          {{label}}
-        </a>
-      </div>
+        {% if img %}style="background: url('{{img}}') center / cover;"{% endif %}>
+        <div class="mdl-card__title mdl-card--expand"></div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/label/{{label}}">
+            {{label}}
+          </a>
+        </div>
       {% endif %}
       
     </div>
