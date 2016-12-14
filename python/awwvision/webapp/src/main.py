@@ -30,6 +30,13 @@ q = psq.Queue(pubsub.Client(), 'images')
 
 @app.route('/')
 def index():
+    ts = request.args.get('ts')
+    if ts is None : 
+        ts = str(time.time())
+        logging.warning('initial timestamp: ' + ts)
+    else:
+        logging.warning('existing timestamp: ' + ts)
+
     labels = storage.get_labels()
     labels_and_images = storage.get_repr_image_for_labels(labels)
     return render_template('index.html', labels=labels_and_images)
@@ -44,8 +51,8 @@ def label(label):
 @app.route('/upload', methods=['POST'])
 def upload():
     logging.warning('upload entry')
-    ts = str(time.time())
-    logging.warning('/upload timestamp: ' + ts)
+    #ts = str(time.time())
+    #logging.warning('/upload timestamp: ' + ts)
     url = request.form['url']+'?ts='+ts
     logging.warning('enque before - url: ' + url)
     q.enqueue('main.process_url_task', url)
