@@ -56,7 +56,7 @@
 }
 
 .crawl-card.mdl-card {
-  background: #4527A0;
+  background: #2227A0;
   color: #EEE;
   margin: 0 auto;
 }
@@ -66,5 +66,5 @@
 }
 
 .crawl-card > .mdl-card__actions .mdl-button--colored {
-  color: #90CAF9;
+  color: #cccccc;
 }
