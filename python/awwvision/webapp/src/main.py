@@ -50,13 +50,7 @@ def upload():
     logging.warning('enque before - url: ' + url)
     q.enqueue('main.process_url_task', url)
     logging.warning('enque after')
-    return render_template('image_accepted.html?ts='+ts)
-
-
-@app.route('/start_crawler', methods=['POST'])
-def start_crawler():
-    q.enqueue('main.scrape_reddit_task', 'aww', pages=20)
-    return render_template('crawler_started.html')
+    return render_template('image_accepted.html', ts=ts)
 
 
 if __name__ == '__main__':
