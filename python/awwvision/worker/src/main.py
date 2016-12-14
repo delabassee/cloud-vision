@@ -71,7 +71,7 @@ def process_url_task(url):
     storage = Storage()
     logging.warning('before label_image_url')
 
-    label_image_url(vision, storage, image_url)
+    label_image_url(vision, storage, url)
     
 
 def scrape_reddit(subreddit, pages=10):
