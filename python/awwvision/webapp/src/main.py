@@ -39,6 +39,12 @@ def label(label):
     return render_template('label.html', images=images)
 
 
+@app.route('/upload', methods=['POST'])
+def start_crawler():
+    q.enqueue('main.process_url_task', 'https://www.google.be/imgres?imgurl=https://cdn.pixabay.com/photo/2014/03/29/09/17/cat-300572_960_720.jpg&imgrefurl=https://pixabay.com/en/photos/cat/&h=720&w=858&tbnid=HR3uWxjt9lIc-M:&vet=1&tbnh=168&tbnw=200&docid=GNgiwtR-iQNmZM&itg=1&usg=__QbLr_alJUc4HRCx-zHC_MfDXnHY=&sa=X&ved=0ahUKEwiqlJiMuvPQAhWKLsAKHXWsDzMQ_B0IdjAM')
+    return render_template('crawler_started.html')
+
+
 @app.route('/start_crawler', methods=['POST'])
 def start_crawler():
     q.enqueue('main.scrape_reddit_task', 'aww', pages=20)
