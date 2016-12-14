@@ -50,7 +50,7 @@ def upload():
     logging.warning('enque before - url: ' + url)
     q.enqueue('main.process_url_task', url)
     logging.warning('enque after')
-    return render_template('crawler_started.html')
+    return render_template('image_accepted.html?ts='+ts)
 
 
 @app.route('/start_crawler', methods=['POST'])
