@@ -15,6 +15,7 @@
 from gcloud import pubsub
 import requests
 import psq
+import logging
 
 import reddit
 from storage import Storage
@@ -22,6 +23,8 @@ from vision import VisionApi
 
 
 def download_image(image_url):
+    
+    logging.warning('download_image ' + image_url)
     r = requests.get(image_url)
     r.raise_for_status()
     return r.content
@@ -43,6 +46,9 @@ def label_images(vision, storage, image_urls):
 
         
 def label_image_url(vision, storage, image_url):
+    
+    logging.warning('label_image_url entry')
+
     image_content = download_image(image_url)
 
     response = vision.detect_label(image_content)
@@ -60,8 +66,10 @@ def label_images_task(image_urls):
 
     
 def process_url_task(url):
+    logging.warning('process_url_task ' + url)
     vision = VisionApi()
     storage = Storage()
+    logging.warning('before label_image_url')
 
     label_image_url(vision, storage, image_url)
     
