@@ -16,6 +16,7 @@ from flask import Flask, render_template, request
 from gcloud import pubsub
 import psq
 import logging
+import time
 
 from storage import Storage
 
@@ -43,7 +44,9 @@ def label(label):
 @app.route('/upload', methods=['POST'])
 def upload():
     logging.warning('upload entry')
-    url = request.form['url']
+    ts = str(time.time())
+    logging.warning('/upload timestamp: ' + ts)
+    url = request.form['url']+'?ts='+ts
     logging.warning('enque before - url: ' + url)
     q.enqueue('main.process_url_task', url)
     logging.warning('enque after')
