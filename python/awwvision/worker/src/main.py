@@ -55,10 +55,6 @@ def label_image_url(vision, storage, image_url):
         storage.add_labels(labels)
         storage.add_image(image_url, labels) 
     
-    for image_url, labels in zip(image_url, response):
-        storage.add_labels(labels)
-        storage.add_image(image_url, labels)        
-        
 
 def label_images_task(image_urls):
     vision = VisionApi()
