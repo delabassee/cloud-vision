@@ -39,7 +39,7 @@ def index():
 
     labels = storage.get_labels()
     labels_and_images = storage.get_repr_image_for_labels(labels)
-    return render_template('index.html', labels=labels_and_images)
+    return render_template('index.html', labels=labels_and_images, ts=ts)
 
 
 @app.route('/label/<label>')
@@ -51,7 +51,8 @@ def label(label):
 @app.route('/upload', methods=['POST'])
 def upload():
     logging.warning('upload entry')
-    ts = str(time.time())
+    ts = request.args.get('ts')
+    #ts = str(time.time())
     logging.warning('/upload timestamp: ' + ts)
     url = request.form['url']+'?ts='+ts
     logging.warning('enque before - url: ' + url)
